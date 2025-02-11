@@ -5,21 +5,32 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(title: const Text("Home")),
-      body: const Stack(
-        children: [
-          // Positioned.fill(
-          //   child: Image.asset(
-          //     'assets/bg_img.jpg',
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
-          Text(
-            'Home Screen',
-            style: TextStyle(fontSize: 24),
-          ),
-        ],
+      body: SizedBox(
+        height: height,
+        width: width,
+        child: Stack(
+          children: [
+            Image.asset(
+              'assets/images/bg_img.jpg',
+              fit: BoxFit.cover,
+              height: height,
+              width: width,
+            ),
+            const Positioned(
+              top: 50,
+              left: 20,
+              child: Text(
+                'Home Screen',
+                style: TextStyle(fontSize: 24, color: Colors.white),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
