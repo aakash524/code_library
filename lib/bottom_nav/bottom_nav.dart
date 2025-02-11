@@ -1,3 +1,5 @@
+import 'package:code_library/screens/bsc/select_year_screen.dart';
+import 'package:code_library/screens/bsc/tab_bsc.dart';
 import 'package:code_library/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,8 +15,8 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
 
   static final List<Widget> _pages = <Widget>[
     const Center(child: HomeScreen()),
-    const Center(child: Text('Search Screen', style: TextStyle(fontSize: 24))),
-    const Center(child: Text('Profile Screen', style: TextStyle(fontSize: 24))),
+    const Center(child: StudentYearSelectionScreen()),
+    const Center(child: YearTabsScreen()),
   ];
 
   void _onItemTapped(int index) {
