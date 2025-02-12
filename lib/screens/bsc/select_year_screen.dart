@@ -1,3 +1,4 @@
+import 'package:code_library/screens/bsc/tab_bsc.dart';
 import 'package:flutter/material.dart';
 
 class StudentYearSelectionScreen extends StatelessWidget {
@@ -41,7 +42,7 @@ class StudentYearSelectionScreen extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => _getScreenForYear(year),
+            builder: (context) => BscTabsScreen(),
           ),
         );
       },
@@ -73,13 +74,5 @@ class StudentYearSelectionScreen extends StatelessWidget {
     );
   }
 
-  // Placeholder method to return different screens based on year
-  Widget _getScreenForYear(String year) {
-    return Scaffold(
-      appBar: AppBar(title: Text(year)),
-      body: Center(
-        child: Text('Welcome to $year Student Section'),
-      ),
-    );
+ 
   }
-}

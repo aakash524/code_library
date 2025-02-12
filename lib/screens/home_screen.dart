@@ -1,4 +1,5 @@
-import 'package:code_library/screens/bsc/select_year_screen.dart';
+import 'package:code_library/screens/bca/tab_bca.dart';
+import 'package:code_library/screens/bsc/tab_bsc.dart';
 import 'package:flutter/material.dart';
 
 // Book model to represent book data
@@ -7,8 +8,11 @@ class Book {
   final String description;
   final IconData icon;
 
-  Book(
-      {required this.title, required this.description, this.icon = Icons.book});
+  Book({
+    required this.title,
+    required this.description,
+    this.icon = Icons.book,
+  });
 }
 
 class HomeScreen extends StatefulWidget {
@@ -22,21 +26,25 @@ class _HomeScreenState extends State<HomeScreen> {
   // Sample book data - can be replaced with actual data source
   final List<Book> books = [
     Book(
-        title: 'BSc E-Books ',
-        description: 'For Computer Science Students',
-        icon: Icons.science),
+      title: 'BSc E-Books',
+      description: 'For Computer Science Students',
+      icon: Icons.science,
+    ),
     Book(
-        title: 'BCA E-Books',
-        description: 'For Computer Science Students',
-        icon: Icons.biotech),
+      title: 'BCA E-Books',
+      description: 'For Computer Science Students',
+      icon: Icons.biotech,
+    ),
     Book(
-        title: 'Syllabus',
-        description: 'Only Computer Subjects',
-        icon: Icons.data_exploration),
+      title: 'Syllabus',
+      description: 'Only Computer Subjects',
+      icon: Icons.data_exploration,
+    ),
     Book(
-        title: 'All Papers',
-        description: 'Only Computer Subjects',
-        icon: Icons.calculate),
+      title: 'All Papers',
+      description: 'Only Computer Subjects',
+      icon: Icons.calculate,
+    ),
   ];
 
   // Search controller to filter books
@@ -81,6 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Image.asset(
               'assets/images/bg_img.jpg',
               fit: BoxFit.cover,
+              opacity: const AlwaysStoppedAnimation(0.7),
             ),
           ),
 
@@ -96,16 +105,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 TextField(
                   controller: _searchController,
                   decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.search,
-                        color: Colors.grey.shade800,
-                      ),
-                      hintText: 'Search book....',
-                      filled: true,
-                      fillColor: Colors.grey.shade200,
-                      border: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.blue),
-                          borderRadius: BorderRadius.circular(10))),
+                    prefixIcon: Icon(
+                      Icons.search,
+                      color: Colors.grey.shade800,
+                    ),
+                    hintText: 'Search book....',
+                    filled: true,
+                    fillColor: Colors.grey.shade200.withOpacity(0.9),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 20),
+                  ),
                 ),
 
                 const SizedBox(height: 20),
@@ -115,91 +128,116 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 150,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(10)),
+                    color: Colors.green.withOpacity(0.8),
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        blurRadius: 10,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
+                  ),
                   child: const Center(
                     child: Text(
                       'New Books Collection',
                       style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
                 ),
 
-                const SizedBox(height: 5),
+                const SizedBox(height: 20),
 
                 // Book Grid
                 Expanded(
-  child: Padding(
-    padding: const EdgeInsets.all(16),
-    child: GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 25,
-        mainAxisSpacing: 20,
-        childAspectRatio: 1,
-      ),
-      itemCount: _filteredBooks.length,
-      itemBuilder: (context, index) {
-        final book = _filteredBooks[index];
-        return GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => StudentYearSelectionScreen(),
-              ),
-            );
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.blue.shade100,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  blurRadius: 5,
-                  offset: const Offset(0, 3),
-                ),
-              ],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircleAvatar(
-                  backgroundColor: Colors.blue.shade300,
-                  child: Icon(book.icon, color: Colors.white),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  book.title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-                Text(
-                  book.description,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.grey.shade700,
-                    fontSize: 12,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 20,
+                        mainAxisSpacing: 20,
+                        childAspectRatio: 1,
+                      ),
+                      itemCount: _filteredBooks.length,
+                      itemBuilder: (context, index) {
+                        final book = _filteredBooks[index];
+                        return GestureDetector(
+                          onTap: () {
+                            if (book.title == 'BSc E-Books') {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const BscTabsScreen(),
+                                ),
+                              );
+                            } else if (book.title == 'BCA E-Books') {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const BcaTabsScreen(),
+                                ),
+                              );
+                            }
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.blue.shade100.withOpacity(0.9),
+                              borderRadius: BorderRadius.circular(15),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.1),
+                                  blurRadius: 10,
+                                  offset: const Offset(0, 5),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircleAvatar(
+                                  backgroundColor: Colors.blue.shade300,
+                                  radius: 30,
+                                  child: Icon(
+                                    book.icon,
+                                    color: Colors.white,
+                                    size: 30,
+                                  ),
+                                ),
+                                const SizedBox(height: 15),
+                                Text(
+                                  book.title,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  book.description,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    color: Colors.grey.shade700,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-        );
-      },
-    ),
-  ),
-)
-              ],
-            ),
-          )
         ],
       ),
     );

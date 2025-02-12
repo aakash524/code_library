@@ -1,3 +1,4 @@
+
 // data/subjects_data.dart
 import 'package:flutter/material.dart';
 
@@ -15,26 +16,27 @@ class Subject {
   });
 }
 
+
 class SubjectsData {
   static final Map<int, List<Subject>> yearWiseSubjects = {
     1: [
       Subject(
         name: 'Web Design',
-        code: 'BSC 1',
+        code: 'BCA 1',
         description: 'Fundamental mathematical concepts and calculus',
-        icon: Icons.computer,
+        icon: Icons.functions,
       ),
       Subject(
         name: 'Computer Architecture',
-        code: 'Bsc 1',
+        code: 'BCA 1',
         description: 'Basic physics principles and mechanics',
-        icon: Icons.computer_outlined,
+        icon: Icons.science,
       ),
-      Subject(
+       Subject(
         name: 'Programming Methodlogy with DSA',
-        code: 'Bsc 1',
+        code: 'BCA 1',
         description: 'Basic physics principles and mechanics',
-        icon: Icons.computer_outlined,
+        icon: Icons.science,
       ),
       // Add more subjects...
     ],
@@ -51,7 +53,7 @@ class SubjectsData {
         description: 'Introduction to computer networks and security',
         icon: Icons.network_check,
       ),
-      Subject(
+       Subject(
         name: 'Programming with Java',
         code: 'CS202',
         description: 'Introduction to computer networks and security',
@@ -73,7 +75,7 @@ class SubjectsData {
         description: 'Database management and SQL queries',
         icon: Icons.storage,
       ),
-      Subject(
+       Subject(
         name: 'Programming with Python',
         code: 'CS302',
         description: 'Database management and SQL queries',
@@ -225,8 +227,8 @@ class SubjectCard extends StatelessWidget {
 }
 
 // screens/year_tabs_screen.dart
-class BscTabsScreen extends StatelessWidget {
-  const BscTabsScreen({super.key});
+class BcaTabsScreen extends StatelessWidget {
+  const BcaTabsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -235,22 +237,23 @@ class BscTabsScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'BSC Subjects',
+            'BCA Subjects',
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
           ),
           backgroundColor: Colors.blue[800],
           bottom: TabBar(
-            indicator: BoxDecoration(
-              color: Colors.blue[100],
-              borderRadius: BorderRadius.circular(5),
+            indicatorColor: Colors.white,
+            labelStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
             ),
-            labelColor: Colors.blueGrey[900],
-            unselectedLabelColor: Colors.white,
-            labelStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            unselectedLabelStyle:
-                TextStyle(fontSize: 14, fontWeight: FontWeight.w700),
-            indicatorSize: TabBarIndicatorSize.tab,
-            tabs: [
+            unselectedLabelStyle: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.normal,
+              color: Colors.white54,
+            ),
+            tabs: const [
               Tab(text: '1st Year'),
               Tab(text: '2nd Year'),
               Tab(text: '3rd Year'),

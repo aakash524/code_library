@@ -15,8 +15,8 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
 
   static final List<Widget> _pages = <Widget>[
     const Center(child: HomeScreen()),
-    const Center(child: StudentYearSelectionScreen()),
-    const Center(child: YearTabsScreen()),
+    const Center(child: Text('search screen  ')),
+    const Center(child: Text('profile screen  ')),
   ];
 
   void _onItemTapped(int index) {
@@ -28,7 +28,6 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
