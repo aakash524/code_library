@@ -42,19 +42,44 @@ class SubjectsData {
     ],
     2: [
       Subject(
-        name: 'Data Structures',
+        name: 'Web design with Php',
         code: 'CS201',
         description: 'Advanced data structures and algorithms',
         icon: Icons.account_tree,
       ),
+      Subject(
+        name: 'Computer Networks',
+        code: 'CS202',
+        description: 'Introduction to computer networks and security',
+        icon: Icons.network_check,
+      ),
+       Subject(
+        name: 'Programming with Java',
+        code: 'CS202',
+        description: 'Introduction to computer networks and security',
+        icon: Icons.network_check,
+      ),
+
       // Add more subjects...
     ],
     3: [
       Subject(
-        name: 'Machine Learning',
+        name: 'Web design with Angular',
         code: 'CS301',
         description: 'Introduction to machine learning and AI concepts',
         icon: Icons.psychology,
+      ),
+      Subject(
+        name: 'Operating Systems',
+        code: 'CS302',
+        description: 'Database management and SQL queries',
+        icon: Icons.storage,
+      ),
+       Subject(
+        name: 'Programming with Python',
+        code: 'CS302',
+        description: 'Database management and SQL queries',
+        icon: Icons.storage,
       ),
       // Add more subjects...
     ],
@@ -71,7 +96,7 @@ class SubjectDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(subject.name),
+        title: Text(subject.name, style: const TextStyle(color: Colors.white)),
         backgroundColor: Colors.blue[800],
       ),
       body: Container(
@@ -222,6 +247,11 @@ class YearTabsScreen extends StatelessWidget {
               fontSize: 16,
               fontWeight: FontWeight.bold,
               color: Colors.white,
+            ),
+            unselectedLabelStyle: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.normal,
+              color: Colors.white54,
             ),
             tabs: const [
               Tab(text: '1st Year'),
